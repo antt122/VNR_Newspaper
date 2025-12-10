@@ -1,13 +1,23 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 
-export default function RadioPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const audioRef = useRef(null);
+// 1. Định nghĩa kiểu dữ liệu cho một bài hát (Interface)
+interface Track {
+  id: string;
+  title: string;
+  fileName: string;
+  program: string;
+  time: string;
+}
 
-  // Danh sách phát được sắp xếp theo thời gian trong ngày: Sáng -> Trưa -> Tối
-  const playlist = [
+export default function RadioPlayer() {
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
+  
+  // 2. Khai báo rõ ref này dùng cho thẻ HTMLAudioElement
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const playlist: Track[] = [
     {
       id: 'morning',
       title: "Bài thể dục buổi sáng",
@@ -31,7 +41,7 @@ export default function RadioPlayer() {
     },
     {
       id: 'night',
-      title: "Bà Nội - Giọng Đọc NSƯT", // Giả định tên đầy đủ dựa trên file
+      title: "Bà Nội - Giọng Đọc NSƯT", 
       fileName: "chuyenbanoi.m4a",
       program: "Đọc truyện đêm khuya",
       time: "10:30 PM"
@@ -40,8 +50,8 @@ export default function RadioPlayer() {
 
   const currentTrack = playlist[currentTrackIndex];
 
-  // Xử lý khi đổi bài (Next/Prev)
-  const changeTrack = (direction) => {
+  // 3. SỬA LỖI CHÍNH Ở ĐÂY: Thêm ": number" vào sau direction
+  const changeTrack = (direction: number) => {
     let newIndex = currentTrackIndex + direction;
     
     // Loop lại danh sách nếu đi quá giới hạn
@@ -49,13 +59,12 @@ export default function RadioPlayer() {
     if (newIndex >= playlist.length) newIndex = 0;
 
     setCurrentTrackIndex(newIndex);
-    setIsPlaying(true); // Tự động phát khi chuyển bài
+    setIsPlaying(true); 
   };
 
-  // Effect để reload và play audio khi track thay đổi
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.load(); // Load file mới
+      audioRef.current.load();
       if (isPlaying) {
         audioRef.current.play().catch(e => console.log("Chặn autoplay:", e));
       }
@@ -95,7 +104,6 @@ export default function RadioPlayer() {
 
       {/* --- Bộ điều khiển --- */}
       <div className="flex justify-center items-center gap-6">
-        {/* Nút Previous */}
         <button 
           onClick={() => changeTrack(-1)}
           className="w-10 h-10 rounded-full bg-gray-300 border-2 border-black flex items-center justify-center hover:bg-gray-400 active:scale-95 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
@@ -103,7 +111,6 @@ export default function RadioPlayer() {
           ⏮
         </button>
 
-        {/* Nút Play/Pause chính */}
         <button 
           onClick={() => setIsPlaying(!isPlaying)}
           className={`w-16 h-16 rounded-full border-4 border-black flex items-center justify-center text-2xl transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 ${isPlaying ? 'bg-red-600 text-white' : 'bg-gray-200 text-black'}`}
@@ -111,7 +118,6 @@ export default function RadioPlayer() {
           {isPlaying ? '■' : '▶'}
         </button>
 
-        {/* Nút Next */}
         <button 
           onClick={() => changeTrack(1)}
           className="w-10 h-10 rounded-full bg-gray-300 border-2 border-black flex items-center justify-center hover:bg-gray-400 active:scale-95 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
@@ -120,7 +126,6 @@ export default function RadioPlayer() {
         </button>
       </div>
 
-      {/* --- Trạng thái --- */}
       <div className="mt-6 text-center text-sm font-medium text-gray-700 h-6">
         {isPlaying ? (
            <div className="flex justify-center items-center gap-2 animate-pulse text-red-700">
@@ -131,14 +136,12 @@ export default function RadioPlayer() {
         )}
       </div>
       
-      {/* Thẻ Audio:
-        - src: trỏ vào thư mục /video/ trong public
-      */}
       <audio 
          ref={audioRef}
          src={`/video/${currentTrack.fileName}`} 
-         onEnded={() => changeTrack(1)} // Tự chuyển bài khi hết
+         onEnded={() => changeTrack(1)}
       />
     </div>
+    
   );
-}
+} 
