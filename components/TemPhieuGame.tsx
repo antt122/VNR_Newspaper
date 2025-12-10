@@ -245,23 +245,23 @@ export default function TemPhieuGame() {
 
         {/* Gallery Preview (Mini) - Hình vuông nhỏ (80x80px) */}
         <div className="mt-10 border-t-2 border-black pt-6">
-           <h4 className="font-bold uppercase text-sm mb-6 text-center decoration-wavy underline">
-             Tư liệu hiện vật
-           </h4>
-           
-           {/* Grid layout với justify-items-center để căn giữa các ô vuông */}
-           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 justify-items-center">
-                
-                {/* Ảnh 1: Tem Phiếu -> Dùng thẻ <a> để mở link */}
-                <a 
-                  href="/temphieu/tem1.webp" 
-                  target="_blank" // Mở tab mới
+            <h4 className="font-bold uppercase text-sm mb-8 text-center decoration-wavy underline">
+              Tư liệu hiện vật
+            </h4>
+
+            {/* CẬP NHẬT GRID: grid-cols-2 trên mobile, md:grid-cols-3 trên tablet trở lên để thành "3 trên 3 dưới" */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-4 justify-items-center">
+
+                {/* Ảnh 1: Tem Phiếu */}
+                <a
+                  href="/temphieu/tem1.webp"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="relative w-20 h-20 border-2 border-black bg-gray-200 grayscale opacity-90 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] block"
                 >
-                  <img 
-                    src="/temphieu/tem1.webp" 
-                    alt="Phiếu Mua Hàng" 
+                  <img
+                    src="/temphieu/tem1.webp"
+                    alt="Phiếu Mua Hàng"
                     className="object-cover w-full h-full p-0.5"
                   />
                   <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-max text-center text-[9px] font-bold uppercase bg-paper/80 px-1 text-black">
@@ -270,50 +270,93 @@ export default function TemPhieuGame() {
                 </a>
 
                 {/* Ảnh 2: Sổ Gạo */}
-                <a 
-                  href="/temphieu/tem2.png" 
+                <a
+                  href="/temphieu/tem2.png"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative w-20 h-20 border-2 border-black bg-gray-200 grayscale opacity-90 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] block"
                 >
                   <img src="/temphieu/tem2.png" alt="Sổ Gạo" className="object-cover w-full h-full p-0.5" />
-                   <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-max text-center text-[9px] font-bold uppercase bg-paper/80 px-1 text-black">
-                    Sổ Gạo
+                    <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-max text-center text-[9px] font-bold uppercase bg-paper/80 px-1 text-black">
+                      Sổ Gạo
                   </span>
                 </a>
 
                 {/* Ảnh 3: Tem Lương Thực */}
-                <a 
-                  href="/temphieu/tem3.webp" 
+                <a
+                  href="/temphieu/tem3.webp"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative w-20 h-20 border-2 border-black bg-gray-200 grayscale opacity-90 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] block"
                 >
                   <img src="/temphieu/tem3.webp" alt="Tem Lương Thực" className="object-cover w-full h-full p-0.5" />
-                   <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-max text-center text-[9px] font-bold uppercase bg-paper/80 px-1 text-black">
-                    Tem Lương Thực
+                    <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-max text-center text-[9px] font-bold uppercase bg-paper/80 px-1 text-black">
+                      Tem Lương Thực
                   </span>
                 </a>
 
                 {/* Ảnh 4: Bìa Mua Hàng */}
-                <a 
-                  href="/temphieu/tem4.jpg" 
+                <a
+                  href="/temphieu/tem4.jpg"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative w-20 h-20 border-2 border-black bg-gray-200 grayscale opacity-90 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] block"
                 >
                   <img src="/temphieu/tem4.jpg" alt="Bìa Mua Hàng" className="object-cover w-full h-full p-0.5" />
-                   <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-max text-center text-[9px] font-bold uppercase bg-paper/80 px-1 text-black">
-                    Bìa Mua Hàng
+                    <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-max text-center text-[9px] font-bold uppercase bg-paper/80 px-1 text-black">
+                      Bìa Mua Hàng
                   </span>
                 </a>
-           </div>
-           
-           <p className="text-center text-[10px] italic mt-10 opacity-60 pb-4">(Bấm vào ảnh để mở link gốc)</p>
+
+                {/* --- ẢNH MỚI THÊM 1 (PLACEHOLDER) --- */}
+                {/* Bạn hãy thay thế href và src bằng đường dẫn ảnh thật của bạn */}
+                <a
+                  href="/temphieu/tem5.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative w-20 h-20 border-2 border-black bg-gray-200 grayscale opacity-90 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] block"
+                >
+                   {/* Sử dụng ảnh placeholder tạm thời để giữ chỗ */}
+                  <img
+                      src="/temphieu/tem5.jpg"
+                      alt="Cảnh xếp hàng mua đồ mậu dịch"
+                      className="object-cover w-full h-full p-0.5"
+                  />
+                  {/* Thay đổi phụ đề ở đây */}
+                  <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-max text-center text-[9px] font-bold uppercase bg-paper/80 px-1 text-black">
+                      Cảnh xếp hàng mua đồ mậu dịch
+                  </span>
+                </a>
+
+                {/* --- ẢNH MỚI THÊM 2 (PLACEHOLDER) --- */}
+                {/* Bạn hãy thay thế href và src bằng đường dẫn ảnh thật của bạn */}
+                 <a
+                  href="/temphieu/tem6.webp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative w-20 h-20 border-2 border-black bg-gray-200 grayscale opacity-90 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] block"
+                >
+                   {/* Sử dụng ảnh placeholder tạm thời để giữ chỗ */}
+                  <img
+                      src="/temphieu/tem6.webp"
+                      alt="Cửa hàng mậu dịch"
+                      className="object-cover w-full h-full p-0.5"
+                  />
+                   {/* Thay đổi phụ đề ở đây */}
+                  <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-max text-center text-[9px] font-bold uppercase bg-paper/80 px-1 text-black">
+                      Cửa hàng mậu dịch
+                  </span>
+                </a>
+
+            </div>
+
+            <p className="text-center text-[10px] italic mt-10 opacity-60 pb-4">(Bấm vào ảnh để mở link gốc)</p>
         </div>
       </div>
     );
   }
+
+// ... phần còn lại của component giữ nguyên ...
 
   // --- RENDER: MAIN GAME SCREEN ---
   return (
