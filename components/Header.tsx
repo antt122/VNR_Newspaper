@@ -1,11 +1,14 @@
 /* components/Header.tsx */
 import React from 'react';
 
+// 1. SỬA: Thêm culturalTitle vào interface (để dấu ? nếu không bắt buộc)
 interface HeaderProps {
   subTitle?: string;
+  culturalTitle?: string; 
 }
 
-const Header = ({ subTitle = "TIN CHÍNH TRỊ" }: HeaderProps) => {
+// 2. SỬA: Thêm culturalTitle vào danh sách nhận props
+const Header = ({ subTitle = "TIN CHÍNH TRỊ", culturalTitle }: HeaderProps) => {
   return (
     <header className="border-b-4 border-black mb-8 pb-4 font-serif text-center">
       {/* --- Dòng thông tin nhỏ trên cùng --- */}
@@ -17,7 +20,6 @@ const Header = ({ subTitle = "TIN CHÍNH TRỊ" }: HeaderProps) => {
       
       <div className="py-2">
         {/* --- LOGO CỜ ĐẢNG --- */}
-        {/* Vì để trong public nên src là "/co-dang.webp" */}
         <div className="flex justify-center mb-3">
             <img 
               src="codang/codangnuoc.jpg" 
@@ -34,22 +36,32 @@ const Header = ({ subTitle = "TIN CHÍNH TRỊ" }: HeaderProps) => {
           Độc lập - Tự do - Hạnh phúc
         </h4>
         
-        {/* --- TÊN BÁO (Style to, đậm) --- */}
+        {/* --- TÊN BÁO --- */}
         <h1 className="text-5xl md:text-7xl font-extrabold uppercase scale-y-110 tracking-tighter mb-2 leading-none" 
             style={{ textShadow: '3px 3px 0px rgba(0,0,0,0.15)' }}>
           Báo Thời Bao Cấp
         </h1>
 
         {/* --- KHUNG TIÊU ĐỀ PHỤ --- */}
-        <div className="flex items-center justify-center gap-4 my-4">
-          <div className="h-[2px] w-12 bg-black"></div>
-          
-          <h2 className="text-xl md:text-2xl font-bold uppercase bg-black text-[#fcf7e6] px-6 py-1 min-w-[200px] transform -skew-x-6 shadow-[4px_4px_0px_rgba(0,0,0,0.2)]">
-            <span className="block transform skew-x-6">{subTitle}</span>
-          </h2>
-          
-          <div className="h-[2px] w-12 bg-black"></div>
+        <div className="flex flex-col items-center justify-center my-4 gap-2">
+           <div className="flex items-center justify-center gap-4">
+              <div className="h-[2px] w-12 bg-black"></div>
+              
+              <h2 className="text-xl md:text-2xl font-bold uppercase bg-black text-[#fcf7e6] px-6 py-1 min-w-[200px] transform -skew-x-6 shadow-[4px_4px_0px_rgba(0,0,0,0.2)]">
+                <span className="block transform skew-x-6">{subTitle}</span>
+              </h2>
+              
+              <div className="h-[2px] w-12 bg-black"></div>
+           </div>
+
+           {/* Nếu có culturalTitle thì hiển thị thêm ở dưới (Tùy chọn) */}
+           {culturalTitle && (
+             <div className="text-sm font-bold uppercase tracking-widest mt-1 border border-black px-2 py-1">
+                {culturalTitle}
+             </div>
+           )}
         </div>
+
       </div>
     </header>
   );
