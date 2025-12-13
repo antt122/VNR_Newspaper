@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 
-// 1. Định nghĩa kiểu dữ liệu cho một bài hát (Interface)
+// 1. Định nghĩa kiểu dữ liệu
 interface Track {
   id: string;
   title: string;
@@ -14,52 +14,32 @@ export default function RadioPlayer() {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
   
-  // 2. Khai báo rõ ref này dùng cho thẻ HTMLAudioElement
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const playlist: Track[] = [
-    {
-      id: 'morning',
-      title: "Bài thể dục buổi sáng",
-      fileName: "theduc.m4a",
-      program: "Chào buổi sáng",
-      time: "06:00 AM"
-    },
-    {
-      id: 'noon',
-      title: "Bản tin đặc biệt trưa 30/4",
-      fileName: "tintuc.m4a",
-      program: "Thời sự Trưa",
-      time: "12:00 PM"
-    },
-    {
-      id: 'evening',
-      title: "Kể Chuyện Cảnh Giác VOV",
-      fileName: "chuyenngobuon.m4a",
-      program: "Câu chuyện Cảnh giác",
-      time: "07:00 PM"
-    },
-    {
-      id: 'night',
-      title: "Bà Nội - Giọng Đọc NSƯT", 
-      fileName: "chuyenbanoi.m4a",
-      program: "Đọc truyện đêm khuya",
-      time: "10:30 PM"
-    }
+    { id: 'morning', title: "Bài thể dục buổi sáng", fileName: "theduc.m4a", program: "Chào buổi sáng", time: "06:00 AM" },
+    { id: 'noon', title: "Bản tin đặc biệt trưa 30/4", fileName: "tintuc.m4a", program: "Thời sự Trưa", time: "12:00 PM" },
+    { id: 'evening', title: "Kể Chuyện Cảnh Giác VOV", fileName: "chuyenngobuon.m4a", program: "Câu chuyện Cảnh giác", time: "07:00 PM" },
+    { id: 'night', title: "Bà Nội - Giọng Đọc NSƯT", fileName: "chuyenbanoi.m4a", program: "Đọc truyện đêm khuya", time: "10:30 PM" }
   ];
 
   const currentTrack = playlist[currentTrackIndex];
 
-  // 3. SỬA LỖI CHÍNH Ở ĐÂY: Thêm ": number" vào sau direction
   const changeTrack = (direction: number) => {
     let newIndex = currentTrackIndex + direction;
-    
-    // Loop lại danh sách nếu đi quá giới hạn
     if (newIndex < 0) newIndex = playlist.length - 1;
     if (newIndex >= playlist.length) newIndex = 0;
 
     setCurrentTrackIndex(newIndex);
     setIsPlaying(true); 
+  };
+
+  // --- MỚI THÊM: Hàm tua nhanh/chậm ---
+  const handleSeek = (seconds: number) => {
+    if (audioRef.current) {
+        // Cộng trừ số giây hiện tại
+        audioRef.current.currentTime += seconds;
+    }
   };
 
   useEffect(() => {
@@ -72,11 +52,11 @@ export default function RadioPlayer() {
   }, [currentTrackIndex, isPlaying]);
 
   return (
-    <div className="border-4 border-black bg-[#e8dfc7] p-6 max-w-md mx-auto relative shadow-xl mt-8 font-sans">
+    <div className="border-4 border-black bg-[#e8dfc7] p-6 max-w-md mx-auto relative shadow-xl mt-8 font-sans select-none">
       {/* --- Visual Loa đài --- */}
       <div className="flex gap-2 mb-4">
          <div className="w-1/3 aspect-square bg-black/90 rounded-full flex items-center justify-center border-4 border-gray-600 shadow-inner">
-            <div className="w-2 h-2 bg-gray-400 rounded-full animate-ping opacity-20"></div>
+            <div className={`w-2 h-2 bg-gray-400 rounded-full opacity-20 ${isPlaying ? 'animate-ping' : ''}`}></div>
          </div>
          <div className="w-2/3 flex flex-col justify-between">
             <div className="bg-[#3e4435] h-full border-2 border-black/50 inset-shadow rounded p-2 text-xs font-mono text-[#a8bfa1] flex flex-col justify-between shadow-inner">
@@ -94,7 +74,7 @@ export default function RadioPlayer() {
          </div>
       </div>
 
-      {/* --- Màn hình hiển thị tên chương trình --- */}
+      {/* --- Màn hình hiển thị tên --- */}
       <div className="text-center border-y-2 border-black py-3 mb-6 bg-[#dcd3b8]">
         <h4 className="text-xs uppercase tracking-widest text-gray-600 mb-1">{currentTrack.program}</h4>
         <h3 className="font-bold text-lg leading-tight min-h-[3.5rem] flex items-center justify-center px-2">
@@ -102,7 +82,7 @@ export default function RadioPlayer() {
         </h3>
       </div>
 
-      {/* --- Bộ điều khiển --- */}
+      {/* --- Bộ điều khiển Chính --- */}
       <div className="flex justify-center items-center gap-6">
         <button 
           onClick={() => changeTrack(-1)}
@@ -126,7 +106,28 @@ export default function RadioPlayer() {
         </button>
       </div>
 
-      <div className="mt-6 text-center text-sm font-medium text-gray-700 h-6">
+      {/* --- MỚI THÊM: Nút Tua (Thiết kế ẩn ẩn) --- */}
+      <div className="flex justify-between px-10 mt-3 text-[10px] text-gray-400 font-mono font-bold">
+        {/* Nút lùi 10s */}
+        <button 
+            onClick={() => handleSeek(-10)} 
+            className="hover:text-black hover:scale-110 transition-transform cursor-pointer opacity-50 hover:opacity-100"
+            title="Lùi 10 giây"
+        >
+            ◄◄ -10s
+        </button>
+
+        {/* Nút tới 10s */}
+        <button 
+            onClick={() => handleSeek(10)} 
+            className="hover:text-black hover:scale-110 transition-transform cursor-pointer opacity-50 hover:opacity-100"
+            title="Tới 10 giây"
+        >
+            +10s ►►
+        </button>
+      </div>
+
+      <div className="mt-4 text-center text-sm font-medium text-gray-700 h-6">
         {isPlaying ? (
            <div className="flex justify-center items-center gap-2 animate-pulse text-red-700">
              <span>📡</span> Đang phát âm thanh...
@@ -142,6 +143,5 @@ export default function RadioPlayer() {
          onEnded={() => changeTrack(1)}
       />
     </div>
-    
   );
-} 
+}
