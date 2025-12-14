@@ -5,8 +5,8 @@ const NewsContent = () => {
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12 font-serif text-justify leading-relaxed bg-transparent text-black">
       
-      {/* --- PHẦN 1: HEADER & ẢNH LỚN --- */}
-      <section className="mb-8">
+      {/* --- PHẦN 1: HEADER (GIỮ NGUYÊN) --- */}
+      <section className="mb-6 border-b-4 border-double border-black pb-6">
         <div className="text-center mb-6">
            <p className="text-xs font-bold uppercase tracking-[0.2em] mb-2 opacity-60">Văn kiện Đảng toàn tập</p>
            
@@ -14,210 +14,153 @@ const NewsContent = () => {
              Đại hội đại biểu toàn quốc lần thứ V của Đảng
            </h2>
            
-           <div className="inline-block bg-black text-[#fcf7e6] px-3 py-1 mb-4">
-             <p className="italic font-bold text-sm">
-               Hà Nội, ngày 27 đến 31 tháng 3 năm 1982
-             </p>
+           <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-sm font-bold italic">
+             <span className="bg-black text-[#fcf7e6] px-3 py-1">Hà Nội: 15/3 - 31/3/1982</span>
            </div>
         </div>
 
-        <div className="mb-6">
-           <p className="text-base md:text-lg mb-4 first-letter:float-left first-letter:text-6xl first-letter:font-bold first-letter:mr-3 first-letter:mt-[-10px] first-letter:font-heading">
-             Tham dự Đại hội có 1033 đại biểu thay mặt 1.727.000 đảng viên. Đại hội diễn ra trong bối cảnh đất nước vừa bước ra khỏi chiến tranh nhưng lại đối mặt với cuộc khủng hoảng kinh tế - xã hội trầm trọng.
-           </p>
+        {/* SAPO: ĐOẠN MỞ ĐẦU */}
+        <div className="text-base md:text-lg font-medium italic px-4 md:px-12 mb-6 text-center opacity-90">
+             "Trước bối cảnh đất nước lâm vào khủng hoảng kinh tế - xã hội nghiêm trọng, Đại hội V đặt ra câu hỏi sinh tử: Vì sao tình hình lại sa sút và làm thế nào để thoát ra khỏi cuộc khủng hoảng đang ở mức 'dưới đáy'?"
         </div>
 
         {/* HÌNH 1: QUANG CẢNH */}
-        <figure className="w-full mb-8 border-4 border-double border-black p-1 bg-transparent">
+        <figure className="w-full mb-4 border-2 border-black p-1 bg-transparent">
           <img 
             src="/daihoi/1.png" 
             alt="Quang cảnh Đại hội V" 
-            className="w-full h-auto object-cover grayscale contrast-110" 
+            className="w-full h-auto object-cover grayscale contrast-110 max-h-[400px]" 
           />
-          <figcaption className="text-xs md:text-sm italic text-center mt-2 pt-2 border-t border-black border-dotted">
-            (Ảnh tư liệu) Toàn cảnh phiên khai mạc trọng thể tại Hội trường Ba Đình.
+          <figcaption className="text-xs italic text-center mt-1 pt-1 border-t border-black/50">
+            Quang cảnh phiên khai mạc trọng thể tại Hội trường Ba Đình với 1.033 đại biểu tham dự. (Ảnh tư liệu)
           </figcaption>
         </figure>
       </section>
 
-      {/* --- PHẦN 2: NỘI DUNG CHÍNH (GRID 2 CỘT) --- */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative items-start">
+      {/* --- PHẦN 2: NỘI DUNG CHI TIẾT (CHIA 2 CỘT) --- */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm md:text-base">
         
-        {/* Đường kẻ dọc chia đôi (chỉ hiện trên desktop) */}
-        <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-black opacity-30 transform -translate-x-1/2 h-full"></div>
-
         {/* === CỘT TRÁI === */}
-        <div className="space-y-8">
-          
-          {/* MỤC 1: ĐÁNH GIÁ & HẠN CHẾ */}
-          <article>
-            <h3 className="text-xl font-bold uppercase mb-2 border-b-2 border-black inline-block">1. Đánh giá tình hình</h3>
-            <p className="mb-3 font-bold text-sm">
-               Thắng lợi: Thống nhất đất nước về mặt nhà nước, thắng lợi trong chiến tranh bảo vệ biên giới Tây Nam và biên giới phía Bắc.
-            </p>
+        <div className="space-y-6">
             
-            {/* Thực trạng kinh tế (QUAN TRỌNG) */}
-            <div className="bg-black/5 p-3 mb-4 border-l-4 border-black">
-                <p className="italic text-sm">
-                    "Tuy nhiên, nền kinh tế vẫn lâm vào khủng hoảng, mất cân đối trầm trọng, sản xuất trì trệ, lưu thông phân phối rối ren, đời sống nhân dân rất khó khăn."
+            {/* MỤC 1: BỐI CẢNH KINH TẾ - XÃ HỘI */}
+            <article>
+                <h3 className="font-bold uppercase text-lg border-b-2 border-black inline-block mb-3">1. Những điểm sáng và khoảng tối</h3>
+                <p className="first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-2 first-letter:mt-[-8px] font-heading">
+                    Đến đầu năm 1982, bức tranh kinh tế có những mảng sáng. Trong nông nghiệp, hình thức <strong>Khoán sản phẩm (Chỉ thị 100)</strong> đã được áp dụng rộng rãi, đem lại hiệu quả rõ rệt. Năng suất và sản lượng lương thực đều tăng, bước đầu khắc phục được sự trì trệ trong các Hợp tác xã.
+                </p>
+                <p className="mt-3">
+                    Trong công nghiệp, việc thực hiện <strong>Quyết định 25-CP và 26-CP</strong> đã tạo luồng gió mới trong thi đua sản xuất tại các xí nghiệp quốc doanh. Đời sống người lao động ở một số nơi từng bước được cải thiện.
+                </p>
+            </article>
+
+            {/* BOX KHỦNG HOẢNG */}
+            <div className="border-4 double border-black p-4 bg-black/5">
+                <h4 className="font-bold uppercase text-center text-sm underline mb-2">Thực trạng "Dưới đáy"</h4>
+                <p className="italic text-justify text-sm">
+                    "Tuy nhiên, đổi mới chỉ là bước đầu. Nền kinh tế vẫn mất cân đối nghiêm trọng. Thu nhập quốc dân không đủ bảo đảm tiêu dùng xã hội (phải dựa vào vay và viện trợ). <strong>Lương thực, vải mặc và hàng tiêu dùng thiết yếu đều thiếu thốn gay gắt.</strong>"
                 </p>
             </div>
 
-            {/* Hạn chế của Đại hội V (BẮT BUỘC CÓ) */}
-            <div className="border border-black p-3 bg-transparent">
-                <h4 className="font-bold underline mb-2 text-sm uppercase">Sai lầm chủ quan:</h4>
-                <ul className="list-disc pl-5 space-y-2 text-sm">
-                    <li>
-                        <strong>Nóng vội cải tạo XHCN:</strong> Vẫn đặt mục tiêu hoàn thành cải tạo ở miền Nam trong 5 năm (1981-1985).
-                    </li>
-                    <li>
-                        <strong>Tư duy cũ:</strong> Chưa thấy hết sự cần thiết của kinh tế nhiều thành phần; vẫn duy trì bao cấp nặng nề.
-                    </li>
-                    <li>
-                        Ưu tiên công nghiệp nặng chưa hợp lý.
-                    </li>
-                </ul>
-            </div>
-          </article>
-
-          {/* MỤC 2: NHIỆM VỤ CHIẾN LƯỢC */}
-          <article>
-             <h3 className="text-xl font-bold uppercase mb-3 border-b-2 border-black inline-block mt-2">2. Đường lối Đại hội</h3>
-             <p className="mb-3 text-sm">
-               Đại hội đề ra hai nhiệm vụ chiến lược: <strong>Xây dựng thành công chủ nghĩa xã hội và sẵn sàng chiến đấu bảo vệ Tổ quốc.</strong>
-             </p>
-          </article>
-
-          {/* KHUNG: 12 NHIỆM VỤ (ĐÃ KHÔI PHỤC FULL) */}
-          <div className="border-2 border-black p-5 bg-transparent">
-             <h4 className="font-bold uppercase text-center mb-4 text-sm border-b-2 border-black pb-2">
-               12 Nhiệm vụ chủ yếu
-             </h4>
-             <ol className="list-decimal pl-5 space-y-2 text-sm leading-snug">
-               <li className="pl-2 border-b border-dashed border-black/30 pb-1">Giải quyết những vấn đề cấp bách nhất về đời sống.</li>
-               <li className="pl-2 border-b border-dashed border-black/30 pb-1">Phát triển và sắp xếp lại sản xuất, phân bố lại lao động.</li>
-               <li className="pl-2 border-b border-dashed border-black/30 pb-1">Bố trí lại xây dựng cơ bản phù hợp khả năng.</li>
-               <li className="pl-2 border-b border-dashed border-black/30 pb-1">Cải tiến công tác phân phối lưu thông.</li>
-               <li className="pl-2 border-b border-dashed border-black/30 pb-1">Đẩy mạnh cải tạo xã hội chủ nghĩa.</li>
-               <li className="pl-2 border-b border-dashed border-black/30 pb-1">Làm tốt hợp tác kinh tế quốc tế.</li>
-               <li className="pl-2 border-b border-dashed border-black/30 pb-1">Thực hành tiết kiệm nghiêm ngặt.</li>
-               <li className="pl-2 border-b border-dashed border-black/30 pb-1">Ứng dụng nhanh chóng khoa học kỹ thuật.</li>
-               <li className="pl-2 border-b border-dashed border-black/30 pb-1">Đổi mới hệ thống quản lý kinh tế.</li>
-               <li className="pl-2 border-b border-dashed border-black/30 pb-1">Đẩy mạnh văn hoá, y tế, giáo dục.</li>
-               <li className="pl-2 border-b border-dashed border-black/30 pb-1">Tăng cường quản lý xã hội, an ninh.</li>
-               <li className="pl-2">Bảo đảm nhu cầu kinh tế cho quốc phòng.</li>
-             </ol>
-          </div>
-
+            {/* MỤC 2: TỰ PHÊ BÌNH (Rất quan trọng) */}
+            <article>
+                <h3 className="font-bold uppercase text-lg border-b-2 border-black inline-block mb-3 mt-4">2. Đảng nghiêm khắc tự phê bình</h3>
+                <p>
+                    Báo cáo Chính trị tại Đại hội đã thẳng thắn chỉ rõ: Bên cạnh thắng lợi, chúng ta có rất nhiều khuyết điểm. Kết quả thực hiện kế hoạch 5 năm (1976-1980) chưa thu hẹp được mất cân đối.
+                </p>
+                <p className="mt-2">
+                    Trên mặt trận kinh tế, văn hóa, trận địa xã hội chủ nghĩa đang bị những nhân tố tư bản chủ nghĩa và phi xã hội chủ nghĩa xâm lấn.
+                </p>
+                
+                {/* Trích dẫn nổi bật */}
+                <blockquote className="border-l-4 border-black pl-4 my-4 font-bold italic text-lg leading-snug">
+                    "Đó là những khuyết điểm, sai lầm rất nghiêm trọng. Ban Chấp hành Trung ương xin nghiêm khắc tự phê bình trước Đại hội."
+                </blockquote>
+                <p>
+                    Đại hội đề nghị sau đợt này sẽ tiến hành phê bình sâu sắc trong toàn Đảng, toàn quân để sửa chữa.
+                </p>
+            </article>
         </div>
 
         {/* === CỘT PHẢI === */}
-        <div className="space-y-8">
-          
-          {/* KHUNG: BAN CHẤP HÀNH (ĐÃ KHÔI PHỤC) */}
-          <div className="border-4 double border-black p-1">
-             <div className="border border-black p-4 text-center bg-transparent">
-               <h4 className="uppercase font-bold text-sm mb-2">Ban Chấp Hành Trung Ương</h4>
-               <div className="w-16 h-[2px] bg-black mx-auto mb-3"></div>
-               <div className="flex justify-around items-center">
-                   <div>
-                       <p className="text-3xl font-bold font-heading">116</p>
-                       <p className="text-xs uppercase">Chính thức</p>
-                   </div>
-                   <div className="h-8 w-[1px] bg-black"></div>
-                   <div>
-                       <p className="text-3xl font-bold font-heading">36</p>
-                       <p className="text-xs uppercase">Dự khuyết</p>
-                   </div>
-               </div>
-             </div>
-          </div>
+        <div className="space-y-6">
+            
+            {/* THÔNG TIN LÃNH ĐẠO */}
+            <div className="bg-[#f0e6d2] p-4 border border-black shadow-[4px_4px_0px_black]">
+                <div className="flex gap-4">
+                    <img src="/daihoi/2.jpg" alt="Lê Duẩn" className="w-24 h-32 object-cover border border-black grayscale"/>
+                    <div>
+                        <h4 className="font-bold uppercase text-sm border-b border-black mb-1">Kết quả Bầu cử</h4>
+                        <ul className="text-sm list-disc pl-4 space-y-1 mt-2">
+                            <li><strong>BCH Trung ương:</strong> 116 ủy viên chính thức, 36 dự khuyết.</li>
+                            <li><strong>Tổng Bí thư:</strong> Đồng chí <strong>LÊ DUẨN</strong> tái đắc cử.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-          {/* HÌNH 2 */}
-          <figure className="w-full mb-4 border border-black p-1 shadow-sm bg-transparent">
-              <img 
-                src="/daihoi/2.jpg" 
-                alt="Đồng chí Lê Duẩn" 
-                className="w-full h-auto object-cover grayscale brightness-95" 
-              />
-              <figcaption className="text-xs font-bold text-center mt-1 py-1 bg-black text-white uppercase tracking-wider">
-                Đ/c Tổng Bí thư LÊ DUẨN đọc Báo cáo Chính trị
-              </figcaption>
-          </figure>
+            {/* MỤC 3: HAI NHIỆM VỤ CHIẾN LƯỢC */}
+            <article>
+                <h3 className="font-bold uppercase text-lg border-b-2 border-black inline-block mb-3">3. Hai nhiệm vụ chiến lược</h3>
+                <p className="mb-2">
+                    Trên cơ sở phân tích sâu sắc tình hình, Báo cáo Chính trị đề ra hai nhiệm vụ chiến lược xuyên suốt cho toàn Đảng, toàn dân:
+                </p>
+                <ul className="list-decimal pl-5 font-bold space-y-2 mb-4">
+                    <li className="uppercase">Xây dựng thành công chủ nghĩa xã hội.</li>
+                    <li className="uppercase">Sẵn sàng chiến đấu, bảo vệ vững chắc Tổ quốc Việt Nam XHCN.</li>
+                </ul>
+                <p className="text-sm italic border-t border-black/30 pt-2">
+                    Đồng thời, tăng cường đoàn kết đặc biệt với Lào, Campuchia và hợp tác toàn diện với Liên Xô.
+                </p>
+            </article>
 
-          {/* MỤC 3: KẾT QUẢ 1982-1985 (PHẦN MỚI CẦN THIẾT) */}
-          <article>
-              <h3 className="text-xl font-bold uppercase mb-3 border-b-2 border-black inline-block">3. Giai đoạn 1982 - 1985</h3>
-              <p className="text-sm mb-2">
-                  Các cân đối lớn của nền kinh tế tiếp tục bị phá vỡ. Việc cải cách giá - lương - tiền năm 1985 do nóng vội đã dẫn đến lạm phát phi mã.
-              </p>
+            {/* MỤC 4: NHIỆM VỤ CẤP BÁCH 1981-1985 */}
+            <article>
+                <h3 className="font-bold uppercase text-lg border-b-2 border-black inline-block mb-3">4. Mục tiêu 5 năm (1981 - 1985)</h3>
+                <p className="text-justify mb-3">
+                    Đại hội xác định mục tiêu là cơ bản ổn định tình hình kinh tế - xã hội, đáp ứng những nhu cầu cấp bách nhất (ăn, mặc, ở, học hành, chữa bệnh).
+                </p>
+                
+                {/* LIST BOX */}
+                <div className="border border-black p-3">
+                    <h5 className="font-bold uppercase text-xs mb-2 text-center ">Tư duy đổi mới bước đầu:</h5>
+                    <ul className="text-sm space-y-2 list-square marker:text-black pl-4">
+                        <li>
+                            <span className="font-bold">Nông nghiệp là mặt trận hàng đầu:</span> Thay đổi tư duy so với việc ưu tiên quá mức công nghiệp nặng trước đây.
+                        </li>
+                        <li>
+                            <span className="font-bold">Kinh tế nhiều thành phần:</span> Xác định rõ việc duy trì nền kinh tế nhiều thành phần ở miền Nam trong chặng đường trước mắt.
+                        </li>
+                    </ul>
+                </div>
+            </article>
 
-              {/* LẠM PHÁT SIÊU TỐC - Dẫn chứng quan trọng */}
-              <div className="border border-black p-4 bg-transparent relative mt-4">
-                 <p className="text-xs uppercase font-bold border-b border-black inline-block mb-2">Hội nghị TW 8 (6/1985)</p>
-                 <div className="flex items-center justify-between">
-                     <span className="text-sm font-bold">Lạm phát năm 1986:</span>
-                     <span className="text-4xl font-bold font-heading">774%</span>
-                 </div>
-                 <p className="text-xs italic mt-2 text-right">
-                     (Khủng hoảng kinh tế lên tới đỉnh điểm)
+            {/* MỤC 5: XÂY DỰNG ĐẢNG */}
+            <article>
+                 <h3 className="font-bold uppercase text-lg border-b-2 border-black inline-block mb-3">5. Công tác Xây dựng Đảng</h3>
+                 <p className="text-sm text-justify">
+                    Khẳng định Đảng Cộng sản Việt Nam là một Đảng Mác - Lênin kiên cường. Tuy nhiên, cần nâng cao tính giai cấp công nhân và tính tiên phong. Làm cho Đảng luôn trong sạch, vững mạnh, gắn bó mật thiết với quần chúng để lãnh đạo nhân dân vượt qua khó khăn lịch sử này.
                  </p>
-              </div>
-          </article>
-
-          {/* MỤC 4: BƯỚC ĐỘT PHÁ THỨ BA (NỘI DUNG QUAN TRỌNG NHẤT) */}
-          <div className="border-4 double border-black p-1 bg-[#fcf7e6]/50">
-             <div className="border border-black p-4 bg-transparent">
-                 <h4 className="font-bold uppercase text-center text-lg mb-2 underline decoration-2 underline-offset-4">
-                    Bước đột phá thứ ba
-                 </h4>
-                 <p className="text-center text-xs font-bold mb-3 bg-black text-white py-1">HỘI NGHỊ BỘ CHÍNH TRỊ (8/1986)</p>
-                 
-                 <p className="text-sm mb-3 text-justify">
-                     Đây là mốc son quyết định, đưa ra những quan điểm mới ("Kết luận đối với một số vấn đề kinh tế") để chuẩn bị cho Đại hội VI:
-                 </p>
-
-                 <ul className="space-y-3 text-sm">
-                     <li className="flex items-start">
-                         <span className="font-bold mr-2 text-lg leading-none">1.</span>
-                         <span>
-                            <strong>Cơ cấu sản xuất:</strong> Tập trung thực hiện 3 chương trình mục tiêu: 
-                            <span className="block font-bold mt-1 italic text-xs uppercase border border-black p-1 text-center bg-transparent">
-                                Lương thực TP - Hàng tiêu dùng - Xuất khẩu
-                            </span>
-                         </span>
-                     </li>
-                     <li className="flex items-start">
-                         <span className="font-bold mr-2 text-lg leading-none">2.</span>
-                         <span>
-                            <strong>Cải tạo XHCN:</strong> Thừa nhận cơ cấu kinh tế <strong>nhiều thành phần</strong>.
-                         </span>
-                     </li>
-                     <li className="flex items-start">
-                         <span className="font-bold mr-2 text-lg leading-none">3.</span>
-                         <span>
-                            <strong>Quản lý kinh tế:</strong> Xóa bỏ bao cấp, chuyển sang <strong>hạch toán kinh doanh</strong>.
-                         </span>
-                     </li>
-                 </ul>
-             </div>
-          </div>
-
-          {/* Ý NGHĨA */}
-          <div className="bg-black/5 p-4 border-l-4 border-black mt-4">
-              <p className="text-sm italic text-justify font-medium">
-                  → Những bước đột phá này đã làm thay đổi tư duy của Đảng, tạo cơ sở lý luận và thực tiễn quan trọng để Đại hội VI (12/1986) đề ra đường lối <strong>Đổi mới</strong> toàn diện.
-              </p>
-          </div>
-
+            </article>
         </div>
+
       </div>
 
-      {/* --- PHẦN KẾT LUẬN --- */}
-      <section className="mt-12 border-t-4 border-black pt-6 text-center">
-        <p className="text-xl md:text-2xl font-bold uppercase mb-2 font-heading">
-          "Tất cả vì Tổ quốc xã hội chủ nghĩa, vì hạnh phúc của nhân dân"
-        </p>
+      {/* --- PHẦN KẾT (FOOTER CỦA BÀI BÁO) --- */}
+      <section className="mt-8 border-t-4 border-black pt-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="w-full md:w-2/3">
+                  <p className="font-bold uppercase text-sm">Ý nghĩa lịch sử:</p>
+                  <p className="text-sm italic">
+                      Đại hội V đánh dấu bước trưởng thành về tư duy: Biết nhìn thẳng vào sự thật, xác định đúng chặng đường đầu tiên của thời kỳ quá độ, đặt nền móng cho những đổi mới mạnh mẽ hơn sau này.
+                  </p>
+              </div>
+              <div className="w-full md:w-1/3 text-right">
+                  <span className="inline-block border-2 border-black px-4 py-2 font-bold uppercase text-xs tracking-widest bg-black text-white">
+                      Theo Văn kiện Đảng
+                  </span>
+              </div>
+          </div>
       </section>
     </div>
   );
