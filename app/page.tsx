@@ -118,7 +118,7 @@ export default function Home() {
                 <TVPlayer 
                   // Sử dụng đường dẫn tương đối từ thư mục public
                   videoSrc="/video/My Video1.mp4" 
-                  title="PHIM TÀI LIỆU: CUỘC SỐNG THỜI BAO CẤP"
+                  title="Thời sự: Đại hội đại biểu toàn quốc lần thứ V"
                 />
             </div>
         )}
